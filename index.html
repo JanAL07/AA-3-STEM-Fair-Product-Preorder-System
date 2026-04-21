@@ -100,10 +100,19 @@
 <script>
 
   // COOKIE FUNCTIONS
-  function validateForm() {
-    
+  function validateForm(name, variant, quantity, pickup, address, terms) {
+    let errors = [];
 
-    
+    if (name === "") errors.push("Customer name is required");
+    if (variant === "") errors.push("Product must be selected");
+    if (quantity === "" || quantity <= 0) errors.push("Quantity must be greater than 0");
+    if (pickup === "") errors.push("Pickup method is required");
+    if (!terms) errors.push("You must accept the terms");
+    if (pickup === "Delivery" && address === "") {
+      errors.push("Address is required for delivery");
+    }
+
+    return errors;
   }
   
   function setCookie(name, value, maxAge) {
