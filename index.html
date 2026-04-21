@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pre-Order Form</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 50px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input, select {
+      width: 95%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+
+    #terms {
+      width: 10%;
+    }
+
+    button {
+      padding: 10px;
+      width: 100%;
+      margin-top: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: red;
+      margin-bottom: 10px;
+      min-height: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Science Project Pre-Order</h2>
+
+  <!-- Error Message Area -->
+  <div id="errorMsg" class="error"></div>
+
+  <form onsubmit="return handleOrder()">
+    
+    <label>Name:</label>
+    <input type="text" id="name">
+
+    <label>Product:</label>
+    <select id="variant">
+      <option value="">Select</option>
+      <option value="value1">variant1</option>
+      <option value="value2">variant2</option>
+    </select>
+
+    <label>Quantity:</label>
+    <input type="number" id="quantity">
+
+    <label>Pickup Method:</label>
+    <select id="pickup">
+      <option value="">Select</option>
+      <option value="Delivery">Delivery</option>
+      <option value="Meetup">Meetup</option>
+    </select>
+
+    <label>Address (for delivery only):</label>
+    <input type="text" id="address">
+
+    <label>
+      <input type="checkbox" id="terms"> I accept terms
+    </label>
+    <br><br>
+
+    <button type="button" onclick="loadPreviousOrder()">Load Previous Order</button>
+    <button type="submit">Submit</button>
+
+  </form>
+</div>
+
+<script>
+
+  // COOKIE FUNCTIONS
+  function setCookie(name, value, maxAge) {
+
+  }
+
+  function getCookie(name) {
+
+  }
+
+  function deleteCookie(name) {
+
+  }
+
+  // MAIN SUBMIT HANDLER
+  function handleOrder() {
+    document.getElementById("errorMsg").innerHTML = "";
+
+    // TODO: Get values
+
+    // TODO: Validation
+    // If invalid: Display appropriate error message
+    // return false;
+
+    // Otherwise: Store data (cookies + localStorage)
+
+    // Redirect to summary.html
+    window.location.href = "summary.html";
+
+    return false;
+  }
+
+  // LOAD PREVIOUS ORDER
+  function loadPreviousOrder() {
+
+    // TODO: Retrieve stored data
+
+    // TODO: If no data: Display error message "No previous order data"
+
+    // TODO: Otherwise: Populate fields
+
+  }
+
+</script>
+
+</body>
+</html>
+
