@@ -55,8 +55,8 @@
 <div class="container">
   <h2>Science Project Pre-Order</h2>
 
-  <h5> Baryobubble soaps are herbal soaps that can be easily made in small communities. These soaps and soap tablets contain easy-to-find ingredients that are cheap too! 
-    Our soaps are affordable, safe, and healthy to use. </h5>
+  <h5> Baryobubble soaps are herbal soaps that can be easily made in small communities. These soaps and soap tablets contain easy-to-find ingredients in rural areas that are cheap too! 
+    Furthermore, our soaps are affordable, safe, and healthy to use. </h5>
 
   <!-- Error Message Area -->
   <div id="errorMsg" class="error"></div>
@@ -137,28 +137,39 @@
   }
 
 
-  localStorage.setItem("lastname", "Smith");
-
-  document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
-
   // MAIN SUBMIT HANDLER
   function handleOrder() {
-    document.getElementById("errorMsg").innerHTML = "";
-
+    let errorDiv = document.getElementById("errorMsg");
+    errorDiv.innerHTML = "";
+    
     // TODO: Get values
-
+    let name = document.getElementById("name").value.trim();
+    let variant = document.getElementById("variant").value;
+    let variantText = document.getElementById("variant").selectedOptions[0].text;
+    let quantity = document.getElementById("quantity").value;
+    let pickup = document.getElementById("pickup").value;
+    let address = document.getElementById("address").value.trim();
+    let terms = document.getElementById("terms").checked;
+    
     // TODO: Validation
+    let errors = validateForm(name, variant, quantity, pickup, address, terms);
+
+    if (errors.length > 0) {
+      errorDiv.innerHTML = errors.join("<br>");
+      return false;
+    }
     // If invalid: Display appropriate error message
     // return false;
 
-    if () {
-
-    } else { 
-      
-      return false;
-    }
 
     // Otherwise: Store data (cookies + localStorage)
+    setCookie("customerName", name, 604800);
+
+    localStorage.setItem("product", variantText);
+    localStorage.setItem("quantity", quantity);
+    localStorage.setItem("pickup", pickup);
+    localStorage.setItem("address", address);
+
 
     // Redirect to summary.html
     window.location.href = "summary.html";
@@ -175,12 +186,31 @@
 
     // TODO: Otherwise: Populate fields
 
-    if () {
+    let name = getCookie("customerName");
+    let product = localStorage.getItem("product");
+    let quantity = localStorage.getItem("quantity");
+    let pickup = localStorage.getItem("pickup");
+    let address = localStorage.getItem("address");
 
-    } else { 
+    if (!name && !product) {
+      document.getElementById("errorMsg").innerHTML = "No previous order data";
+      return;
+    }
 
+    document.getElementById("name").value = name || "";
+    document.getElementById("quantity").value = quantity || "";
+    document.getElementById("pickup").value = pickup || "";
+    document.getElementById("address").value = address || "";
+
+    // Restore product selection
+    let options = document.getElementById("variant").options;
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].text === product) {
+        options[i].selected = true;
+      }
     }
   }
+
 
 </script>
 
