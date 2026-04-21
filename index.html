@@ -55,8 +55,8 @@
 <div class="container">
   <h2>Science Project Pre-Order</h2>
 
-  <h6> Baryobubble soaps are herbal soaps that can be easily made in small communities. These soaps and soap tablets contain easy-to-find ingredients that are cheap too! 
-    Our soaps are affordable, safe, and healthy to use. </h6>
+  <h5> Baryobubble soaps are herbal soaps that can be easily made in small communities. These soaps and soap tablets contain easy-to-find ingredients that are cheap too! 
+    Our soaps are affordable, safe, and healthy to use. </h5>
 
   <!-- Error Message Area -->
   <div id="errorMsg" class="error"></div>
@@ -100,8 +100,12 @@
 <script>
 
   // COOKIE FUNCTIONS
-  function setCookie(name, value, maxAge) {
+  function validateForm() {
 
+  }
+  
+  function setCookie(name, value, maxAge) {
+    document.cookie = "customerName=name, expires=Mon, 17 Aug 2026 12:00:00 UTC, maxAge";
   }
 
   function getCookie(name) {
