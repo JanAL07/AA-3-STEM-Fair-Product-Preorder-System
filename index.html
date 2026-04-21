@@ -108,16 +108,24 @@
   
   function setCookie(name, value, maxAge) {
     document.cookie = "customerName=name; expires=Mon, 17 Aug 2026 12:00:00 UTC; max-age=604800; path=/";
+    
 
   }
 
   function getCookie(name) {
+    let namEq = name + "=";
+    let cookies = document.cookie.split(";");
 
+    for
   }
 
   function deleteCookie(name) {
 
   }
+
+  localStorage.setItem("lastname", "Smith");
+
+  document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
 
   // MAIN SUBMIT HANDLER
   function handleOrder() {
