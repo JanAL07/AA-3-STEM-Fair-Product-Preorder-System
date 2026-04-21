@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Summary</title>
+</head>
+<body>
 
+<h2>Order Summary</h2>
+
+<p><strong>Name:</strong> <span id="name"></span></p>
+<p><strong>Product:</strong> <span id="product"></span></p>
+<p><strong>Quantity:</strong> <span id="quantity"></span></p>
+<p><strong>Total:</strong> ₱<span id="total"></span></p>
+<p><strong>Pickup:</strong> <span id="pickup"></span></p>
+<p><strong>Address:</strong> <span id="address"></span></p>
+
+<h3>Thank you for your order!</h3>
+
+<script>
+
+function getCookie(name) {
+  let cookies = document.cookie.split("; ");
+  for (let i = 0; i < cookies.length; i++) {
+    let parts = cookies[i].split("=");
+    if (parts[0] === name) {
+      return parts[1];
+    }
+  }
+  return "";
+}
+
+//   DATA
+let name = getCookie("customerName");
+let product = localStorage.getItem("product");
+let quantity = localStorage.getItem("quantity");
+let pickup = localStorage.getItem("pickup");
+let address = localStorage.getItem("address");
+
+// PRICE
+let priceMatch = product.match(/PHP\s*(\d+)/);
+let price = priceMatch ? parseInt(priceMatch[1]) : 0;
+
+// TOTAL
+let total = price * quantity;
+
+// DISPLAY or show or wtvs
+document.getElementById("name").innerText = name;
+document.getElementById("product").innerText = product;
+document.getElementById("quantity").innerText = quantity;
+document.getElementById("total").innerText = total;
+document.getElementById("pickup").innerText = pickup;
+document.getElementById("address").innerText = pickup === "Delivery" ? address : "N/A";
+
+</script>
+
+</body>
+</html>
